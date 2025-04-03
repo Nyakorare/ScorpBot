@@ -2,12 +2,16 @@ from flask import Flask, render_template, request, jsonify
 import os
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
 
 # Initialize Gemini client
-client = genai.Client(api_key="AIzaSyAFBi4p3MRv0OKHW8AmZb4VDWrkxJyCDIw")
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Function to generate responses using Gemini
 def generate(user_input):

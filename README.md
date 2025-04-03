@@ -12,4 +12,4 @@ A Trained chatbot using GEMINI AI Studio and their API to only respond to queiri
 This is also to comply with the requirements in my subject lead by Mr. Fabregas.
 
 ## Tech Stack
-Phython Flask + HTML + CSS + JS
+Python 3.9 + Flask + HTML + CSS + JS
