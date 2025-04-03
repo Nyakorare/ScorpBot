@@ -1,6 +1,6 @@
 ## ScorpBot
 
-A Trained chatbot using GEMINI AI Studeio and their API to only respond to queiries related to my senior High School: CEIS-Manila (Centro Escolar Integrated School-Manila).
+A Trained chatbot using GEMINI AI Studio and their API to only respond to queiries related to my senior High School: CEIS-Manila (Centro Escolar Integrated School-Manila).
 
 ### Chatbot Features
 - Official Links
@@ -11,5 +11,5 @@ A Trained chatbot using GEMINI AI Studeio and their API to only respond to queir
 
 This is also to comply with the requirements in my subject lead by Mr. Fabregas.
 
-Tech Stack
+## Tech Stack
 Phython Flask + HTML + CSS + JS
