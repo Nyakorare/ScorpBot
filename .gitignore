@@ -1,5 +1,4 @@
 # Python
-.env
 *.pyc
 __pycache__/
 venv/
@@ -17,6 +16,4 @@ instance/
 .idea/
 
 # Virtual environment
-.env/
-venv/
 ENV/
