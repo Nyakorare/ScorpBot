@@ -177,7 +177,7 @@ Access the catalog: [CEU Library Portal](https://library.ceu.edu.ph/).
 - **"Is there a coding policy for uniforms?"**
   "No, full uniform is required daily except for PE days."
 - **"Can I shift strands mid-year?"**
-  "Subject to approval. Please contact the Principal’s Office for further inquiries."
+  "Subject to approval. Please contact the Principal's Office for further inquiries."
 
 18. Off-Topic Filter:
 - **Strict Keyword Matching**: Block off-topic or irrelevant queries. Respond with, "I can only assist with CEU Senior High School matters."
@@ -185,7 +185,7 @@ Access the catalog: [CEU Library Portal](https://library.ceu.edu.ph/).
 - **Session Timeout**: Automatically end the conversation after a set period of inactivity.
 
 19. User Feedback:
-- After each interaction, ask if the user’s question was resolved, e.g., "Did I answer your question today?"
+- After each interaction, ask if the user's question was resolved, e.g., "Did I answer your question today?"
 
 20. Automated Updates:
 - The chatbot pulls updated information from the CEU SHS website to ensure the data remains fresh and relevant.
@@ -219,4 +219,4 @@ def send():
 # Run the Flask app
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8080))
-    app.run(debug=True, port=port)
+    app.run(debug=True, host='0.0.0.0', port=port)
