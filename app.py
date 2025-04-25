@@ -4,10 +4,8 @@ from google import genai
 from google.genai import types
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
-# Initialize Flask app
 app = Flask(__name__)
 
 # Initialize Gemini client
