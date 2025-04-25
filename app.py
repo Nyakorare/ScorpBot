@@ -16,33 +16,18 @@ app = Flask(__name__)
 # Initialize Gemini client with direct API key
 genai.configure(api_key="AIzaSyCjcQbhJw8D16TaRe6xL4r4-zAAz6dRmzo")
 
-# Function to list available models
-def list_models():
-    try:
-        models = genai.list_models()
-        for model in models:
-            logger.info(f"Model: {model.name}, Supported Methods: {model.supported_generation_methods}")
-        return models
-    except Exception as e:
-        logger.error(f"Error listing models: {e}")
-        return []
-
 # Function to generate responses using Gemini
 def generate(user_input):
     try:
-        # List available models
-        models = list_models()
-        if not models:
-            return "Error: No models available."
+        # Initialize the model
+        model = genai.GenerativeModel('gemini-2.0-flash')
         
-        # Use the first available model that supports generateContent
-        for model in models:
-            if 'generateContent' in model.supported_generation_methods:
-                model_instance = genai.GenerativeModel(model.name)
-                response = model_instance.generate_content(user_input)
-                return response.text
+        # Start a chat session
+        chat = model.start_chat(history=[])
         
-        return "Error: No model found that supports generateContent."
+        # Generate response
+        response = chat.send_message(user_input)
+        return response.text
     except Exception as e:
         logger.error(f"Error generating response: {e}")
         return f"Error: {str(e)}"
