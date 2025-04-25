@@ -3,6 +3,11 @@ import os
 import google.generativeai as genai
 from google.generativeai import types
 from dotenv import load_dotenv
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -13,9 +18,13 @@ genai.configure(api_key="AIzaSyCjcQbhJw8D16TaRe6xL4r4-zAAz6dRmzo")
 
 # Function to generate responses using Gemini
 def generate(user_input):
-    model = genai.GenerativeModel('gemini-pro')
-    response = model.generate_content(user_input)
-    return response.text
+    try:
+        model = genai.GenerativeModel('gemini-pro')
+        response = model.generate_content(user_input)
+        return response.text
+    except Exception as e:
+        logger.error(f"Error generating response: {e}")
+        return f"Error: {str(e)}"
 
 # Home route
 @app.route("/", methods=["GET"])
@@ -25,9 +34,15 @@ def home():
 # Route to handle AJAX requests
 @app.route("/send", methods=["POST"])
 def send():
-    user_input = request.json.get('user_input')
-    response = generate(user_input)
-    return jsonify({'response': response})
+    try:
+        user_input = request.json.get('user_input')
+        if not user_input:
+            return jsonify({'error': 'No input provided'}), 400
+        response = generate(user_input)
+        return jsonify({'response': response})
+    except Exception as e:
+        logger.error(f"Error in send route: {e}")
+        return jsonify({'error': str(e)}), 500
 
 # Run the Flask app
 if __name__ == "__main__":
